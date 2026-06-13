@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riccardo Dallagiovanna | Professional Drummer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        const fallbackPartials = {
+            header: `
+<header class="site-header">
+    <div class="site-brand">
+        <span class="brand-kicker">Portfolio</span>
+        <h2>Riccardo Dallagiovanna</h2>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biography.html">Biografia</a></li>
+            <li><a href="discography.html">Drum Studio</a></li>
+            <li><a href="contact.html">Contatti</a></li>
+        </ul>
+    </nav>
+</header>`,
+            footer: `
+<footer class="site-footer">
+    <p>&copy; 2026 Riccardo Dallagiovanna</p>
+    <p>Professional Drummer • Carpaneto - PC, Italia</p>
+</footer>`
+        };
+
+        async function loadPartial(targetId, filePath) {
+            const target = document.getElementById(targetId);
+            if (!target) {
+                return;
+            }
+
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filePath}: ${response.status}`);
+                }
+                const html = await response.text();
+                target.innerHTML = html;
+            } catch (error) {
+                console.error(error);
+                if (fallbackPartials[targetId]) {
+                    target.innerHTML = fallbackPartials[targetId];
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPartial('header', 'header.html');
+            loadPartial('footer', 'footer.html');
+        });
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="page-layout">
+            <!-- <img src="riccardo.jpg" alt="Riccardo Dallagiovanna"> -->
+            <div id="content">
+            <section class="biography">
+                <h1>Riccardo Dallagiovanna</h1>
+                <p>Riccardo Dallagiovanna è un batterista professionista con oltre 20 anni di esperienza nel settore musicale. Nato a Milano, ha iniziato a suonare la batteria all'età di 10 anni e ha sviluppato una passione per la musica che lo ha portato a diventare uno dei batteristi più richiesti in Italia.</p>
+                <p>La sua carriera è stata caratterizzata da collaborazioni con numerosi artisti di fama nazionale e internazionale, spaziando tra diversi generi musicali come rock, jazz, pop e musica elettronica. Riccardo è noto per la sua tecnica impeccabile, la sua versatilità e la sua capacità di adattarsi a qualsiasi stile musicale.</p>
+                <p>Oltre alla sua attività di musicista, Riccardo è anche un insegnante di batteria molto apprezzato, offrendo lezioni private e workshop in tutta Italia. La sua dedizione alla musica e alla formazione di nuovi talenti lo ha reso una figura di riferimento nel mondo della batteria.</p>
+            </section>
+            </div>
+            <aside id="sidebar">
+                <ul>
+                    <li><strong>Nome:</strong> Riccardo Dallagiovanna</li>
+                    <li><strong>Professione:</strong> Batterista professionista</li>
+                    <li><strong>Esperienza:</strong> Oltre 20 anni</li>
+                    <li><strong>Genere musicale:</strong> Rock, Jazz, Pop</li>
+                    <li><strong>Attività aggiuntive:</strong> Insegnante di batteria, workshop</li>
+                </ul>
+            </aside>
+        </div>
+    </main>
+    <div id="footer"></div>
+</body>
