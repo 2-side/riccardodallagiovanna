@@ -37,8 +37,10 @@ body {
     color: var(--text-color);
     margin: 0 !important;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     line-height: 1.65;
-    padding: 0 10em, 0, 10em;
+    padding: 0;
     padding-bottom: 0 !important;
 }
 
@@ -109,9 +111,14 @@ body {
 
 main {
     display: block;
+    flex: 1 0 auto;
     max-width: 1200px;
     margin: 0 auto;
     padding: 18px 24px 24px;
+}
+
+#footer {
+    margin-top: auto;
 }
 
 .page-layout {

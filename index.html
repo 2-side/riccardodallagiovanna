@@ -3,61 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riccardo Dallagiovanna | Professional Drummer</title>
+    <!-- <title>Riccardo Dallagiovanna | Professional Drummer</title> -->
     <link rel="stylesheet" href="styles.css">
-    <script>
-        const fallbackPartials = {
-            header: `
-<header class="site-header">
-    <div class="site-brand">
-        <span class="brand-kicker">Portfolio</span>
-        <h2>Riccardo Dallagiovanna</h2>
-    </div>
-    <nav class="site-nav" aria-label="Main navigation">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="biography.html">Biografia</a></li>
-            <li><a href="discography.html">Drum Studio</a></li>
-            <li><a href="contact.html">Contatti</a></li>
-        </ul>
-    </nav>
-</header>`,
-            footer: `
-<footer class="site-footer">
-    <p>&copy; 2026 Riccardo Dallagiovanna</p>
-    <p>Professional Drummer • Carpaneto - PC, Italia</p>
-</footer>`
-        };
-
-        async function loadPartial(targetId, filePath) {
-            const target = document.getElementById(targetId);
-            if (!target) {
-                return;
-            }
-
-            try {
-                const response = await fetch(filePath);
-                if (!response.ok) {
-                    throw new Error(`Failed to load ${filePath}: ${response.status}`);
-                }
-                const html = await response.text();
-                target.innerHTML = html;
-            } catch (error) {
-                console.error(error);
-                if (fallbackPartials[targetId]) {
-                    target.innerHTML = fallbackPartials[targetId];
-                }
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            loadPartial('header', 'header.html');
-            loadPartial('footer', 'footer.html');
-        });
-    </script>
 </head>
 <body>
-    <div id="header"></div>
+    <header class="site-header">
+        <div class="site-brand">
+            <span class="brand-kicker">Ritratto dell'eroe da giovane</span>
+            <h2>Riccardo Dallagiovanna</h2>
+        </div>
+        <nav class="site-nav" aria-label="Main navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="biography.html">Biografia</a></li>
+                <li><a href="discography.html">Discografia</a></li>
+                <li><a href="contact.html">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
         <div class="page-layout">
             <!-- <img src="riccardo.jpg" alt="Riccardo Dallagiovanna"> -->
@@ -80,5 +43,10 @@
             </aside>
         </div>
     </main>
-    <div id="footer"></div>
+    <div id="footer">
+        <footer class="site-footer">
+            <p>&copy; 2026 Riccardo Dallagiovanna</p>
+            <p>Professional Drummer • Carpaneto - PC, Italia</p>
+        </footer>
+    </div>
 </body>
